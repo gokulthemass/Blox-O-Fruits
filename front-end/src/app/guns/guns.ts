@@ -42,7 +42,7 @@ export class Guns implements OnInit{
   }
 
   this.http
-    .get<{ allguns: guns[] }>('/assets/data/JSON/guns.json')
+    .get<{ allguns: guns[] }>('assets/data/JSON/guns.json')
     .subscribe({
       next: (data) => {
         this.gunArray = data.allguns;
