@@ -1,0 +1,157 @@
+<section
+  *ngIf="sword"
+  class="min-h-screen bg-black text-white px-4 py-8"
+>
+  <div class="max-w-[950px] mx-auto">
+
+    <!-- Main Container -->
+    <div
+      class="bg-[#050505] border border-red-900/30 rounded-3xl p-6 md:p-8 shadow-[0_0_40px_rgba(255,0,0,0.08)]"
+    >
+
+      <!-- Header Section -->
+      <div class="flex flex-col md:flex-row gap-6">
+
+        <!-- Image Card -->
+        <div class="flex justify-center md:justify-start">
+          <div
+            class="relative w-[200px] h-[200px] rounded-3xl bg-[#0d0d0d] border border-red-900/30 flex items-center justify-center"
+          >
+            <img
+              [src]="sword.image"
+              [alt]="sword.name"
+              class="w-32 h-32 object-contain"
+            />
+          </div>
+        </div>
+
+        <!-- Title Section -->
+        <div class="flex-1 flex flex-col justify-center">
+
+          <div class="flex flex-wrap items-center gap-3">
+
+            <h1 class="text-3xl md:text-5xl font-bold">
+              {{ sword.name }}
+            </h1>
+
+            <span
+              class="px-4 py-1 rounded-full text-sm font-semibold"
+              [ngClass]="rarityClass(sword.rarity)"
+            >
+              {{ sword.rarity }}
+            </span>
+
+          </div>
+
+          <p class="text-gray-400 mt-3">
+            Sword Information
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Stats -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8"
+      >
+
+        <div
+          class="bg-[#111] border border-gray-800 rounded-xl p-5"
+        >
+          <p class="text-gray-400 text-sm">
+            Beli Cost
+          </p>
+
+          <p class="text-2xl font-bold mt-2 text-yellow-400">
+            {{ sword.cost_beli | number }}
+          </p>
+        </div>
+
+        <div
+          class="bg-[#111] border border-gray-800 rounded-xl p-5"
+        >
+          <p class="text-gray-400 text-sm">
+            Fragment Cost
+          </p>
+
+          <p class="text-2xl font-bold mt-2 text-cyan-400">
+            {{ sword.cost_fragments | number }}
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Purchase Info -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"
+      >
+
+        <div
+          class="bg-[#111] border border-gray-800 rounded-xl p-5"
+        >
+          <p class="text-gray-400 text-sm">
+            NPC
+          </p>
+
+          <p class="text-xl font-semibold mt-2">
+            {{ sword.npc }}
+          </p>
+        </div>
+
+        <div
+          class="bg-[#111] border border-gray-800 rounded-xl p-5"
+        >
+          <p class="text-gray-400 text-sm">
+            Location
+          </p>
+
+          <p class="text-lg font-medium mt-2">
+            {{ sword.location }}
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Requirements -->
+      <div
+        class="bg-[#111] border border-gray-800 rounded-xl p-5 mt-4"
+      >
+
+        <h2 class="text-xl font-bold mb-4">
+          Requirements
+        </h2>
+
+        <div
+          class="bg-red-600/20 border border-red-600/40 px-4 py-3 rounded-lg inline-block"
+        >
+          {{ sword.requirement }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Not Found -->
+<section
+  *ngIf="!sword"
+  class="min-h-screen bg-black flex items-center justify-center text-white"
+>
+  <div class="text-center">
+
+    <h1 class="text-4xl font-bold mb-4">
+      Sword Not Found
+    </h1>
+
+    <button
+      (click)="goBack()"
+      class="px-5 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 transition"
+    >
+      Back to Swords
+    </button>
+
+  </div>
+</section>

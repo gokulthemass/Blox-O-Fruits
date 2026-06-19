@@ -1,0 +1,977 @@
+<section class="bg-black text-white py-6 flex justify-center">
+
+  <div class="w-full max-w-[1000px] px-4 flex flex-col gap-10">
+
+<div
+  class="
+  grid
+  grid-cols-1
+  lg:grid-cols-2
+  gap-10
+  lg:gap-16
+  "
+ > 
+
+  <!-- ===================== -->
+  <!-- YOU -->
+  <!-- ===================== -->
+
+  <div>
+
+    <div class="flex justify-center mb-4">
+      <div
+        class="
+        px-5 py-2
+        rounded-full
+        border border-violet-700
+        bg-[#12081f]
+        text-violet-400
+        font-semibold
+        text-sm
+        "
+      >
+        ↓ You
+      </div>
+    </div>
+
+    <!-- Stats -->
+
+    <div
+      class="
+      h-[70px]
+      sm:h-[80px]
+      bg-[#09060f]
+      border border-violet-900/30
+      rounded-2xl
+      flex items-center justify-around
+      mb-6
+      "
+    >
+
+      <div class="flex items-center gap-2">
+
+        <div
+          class="
+          w-7 h-7
+          sm:w-8 sm:h-8
+          rounded-full
+          bg-violet-900/30
+          flex items-center justify-center
+          text-xs
+          "
+        >
+          $
+        </div>
+
+        <div>
+          <div class="text-[10px] sm:text-xs text-zinc-400">
+            VALUE
+          </div>
+
+          <div
+            class="
+            text-violet-400
+            font-bold
+            text-lg
+            sm:text-xl
+            "
+          >
+          {{ formatNumber(getTotalValue(yourSlots)) }}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-2">
+
+        <div
+          class="
+          w-7 h-7
+          sm:w-8 sm:h-8
+          rounded-full
+          bg-yellow-500/20
+          flex items-center justify-center
+          text-xs
+          "
+        >
+          $
+        </div>
+
+        <div>
+          <div class="text-[10px] sm:text-xs text-zinc-400">
+            PRICE
+          </div>
+
+          <div
+            class="
+            text-yellow-400
+            font-bold
+            text-lg
+            sm:text-xl
+            "
+          >
+            {{ formatNumber(getTotalPrice(yourSlots)) }}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-2">
+
+        <div
+          class="
+          w-7 h-7
+          sm:w-8 sm:h-8
+          rounded-full
+          bg-green-500/20
+          flex items-center justify-center
+          text-xs
+          "
+        >
+          ↗
+        </div>
+
+        <div>
+          <div class="text-[10px] sm:text-xs text-zinc-400">
+            DEMAND
+          </div>
+
+          <div
+            class="
+            text-green-400
+            font-bold
+            text-lg
+            sm:text-xl
+            "
+          >
+            {{ getTotalDemand(yourSlots) }}/10
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- YOU GRID -->
+
+    <div
+      class="
+      grid
+      grid-cols-3
+      gap-2
+      sm:gap-3
+      md:gap-4
+      place-items-center
+      "
+    >
+
+      <!-- FIXED ADD BUTTON -->
+
+      <button
+        (click)="openFruitSelector('you',0)"
+        class="
+        w-[90px]
+        h-[90px]
+        sm:w-[105px]
+        sm:h-[105px]
+        md:w-[120px]
+        md:h-[120px]
+        lg:w-[130px]
+        lg:h-[130px]
+        rounded-[18px]
+        bg-[#080808]
+        border border-white/5
+        overflow-hidden
+        "
+      >
+
+        <div
+          class="
+          w-full h-full
+          flex flex-col
+          items-center justify-center
+          bg-violet-900/25
+          border-2 border-dashed
+          border-violet-500
+          "
+        >
+
+          <div class="text-3xl sm:text-4xl text-violet-500">
+            +
+          </div>
+
+          <div
+            class="
+            text-[10px]
+            sm:text-xs
+            text-violet-400
+            "
+          >
+            Add Item
+          </div>
+
+        </div>
+
+      </button>
+
+      @for(slot of yourSlots; track $index){
+
+        <div
+         (dblclick)="removeFruit('you', $index)"
+          class="
+          w-[90px]
+          h-[90px]
+          sm:w-[105px]
+          sm:h-[105px]
+          md:w-[120px]
+          md:h-[120px]
+          lg:w-[130px]
+          lg:h-[130px]
+          rounded-[18px]
+          bg-[#080808]
+          border border-white/5
+          overflow-hidden
+          "
+        >
+
+          @if(slot.fruit){
+
+            <div
+              class="
+              w-full h-full
+              flex flex-col
+              items-center justify-center
+              p-2
+              "
+            >
+
+              <img
+                [src]="slot.fruit.image"
+                [alt]="slot.fruit.name"
+                class="
+                w-full
+                h-[70%]
+                object-contain
+                "
+              >
+
+              <div
+                class="
+                mt-1
+                text-[10px]
+                sm:text-xs
+                text-center
+                truncate
+                w-full
+                "
+              >
+                {{ slot.fruit.name }}
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+  <!-- ===================== -->
+  <!-- THEM -->
+  <!-- ===================== -->
+
+  <div>
+
+    <div class="flex justify-center mb-4">
+      <div
+        class="
+        px-5 py-2
+        rounded-full
+        border border-violet-700
+        bg-[#12081f]
+        text-violet-400
+        font-semibold
+        text-sm
+        "
+      >
+        ↑ Them
+      </div>
+    </div>
+
+    <!-- Stats -->
+
+    <div
+      class="
+      h-[70px]
+      sm:h-[80px]
+      bg-[#09060f]
+      border border-violet-900/30
+      rounded-2xl
+      flex items-center justify-around
+      mb-6
+      "
+    >
+
+      <div class="flex items-center gap-2">
+
+        <div
+          class="
+          w-7 h-7
+          sm:w-8 sm:h-8
+          rounded-full
+          bg-violet-900/30
+          flex items-center justify-center
+          text-xs
+          "
+        >
+          $
+        </div>
+
+        <div>
+          <div class="text-[10px] sm:text-xs text-zinc-400">
+            VALUE
+          </div>
+
+          <div
+            class="
+            text-violet-400
+            font-bold
+            text-lg
+            sm:text-xl
+            "
+          >
+            {{ formatNumber(getTotalValue(theirSlots)) }}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-2">
+
+        <div
+          class="
+          w-7 h-7
+          sm:w-8 sm:h-8
+          rounded-full
+          bg-yellow-500/20
+          flex items-center justify-center
+          text-xs
+          "
+        >
+          $
+        </div>
+
+        <div>
+          <div class="text-[10px] sm:text-xs text-zinc-400">
+            PRICE
+          </div>
+
+          <div
+            class="
+            text-yellow-400
+            font-bold
+            text-lg
+            sm:text-xl
+            "
+          > 
+            {{ formatNumber(getTotalPrice(theirSlots)) }}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-2">
+
+        <div
+          class="
+          w-7 h-7
+          sm:w-8 sm:h-8
+          rounded-full
+          bg-green-500/20
+          flex items-center justify-center
+          text-xs
+          "
+        >
+          ↗
+        </div>
+
+        <div>
+          <div class="text-[10px] sm:text-xs text-zinc-400">
+            DEMAND
+          </div>
+
+          <div
+            class="
+            text-green-400
+            font-bold
+            text-lg
+            sm:text-xl
+            "
+          >
+            {{ getTotalDemand(theirSlots) }}/10
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- THEM GRID -->
+
+    <div
+      class="
+      grid
+      grid-cols-3
+      gap-2
+      sm:gap-3
+      md:gap-4
+      place-items-center
+      "
+    >
+
+      <!-- FIXED ADD BUTTON -->
+
+      <button
+        (click)="openFruitSelector('them',0)"
+        class="
+        w-[90px]
+        h-[90px]
+        sm:w-[105px]
+        sm:h-[105px]
+        md:w-[120px]
+        md:h-[120px]
+        lg:w-[130px]
+        lg:h-[130px]
+        rounded-[18px]
+        bg-[#080808]
+        border border-white/5
+        overflow-hidden
+        "
+      >
+
+        <div
+          class="
+          w-full h-full
+          flex flex-col
+          items-center justify-center
+          bg-violet-900/25
+          border-2 border-dashed
+          border-violet-500
+          "
+        >
+
+          <div class="text-3xl sm:text-4xl text-violet-500">
+            +
+          </div>
+
+          <div
+            class="
+            text-[10px]
+            sm:text-xs
+            text-violet-400
+            "
+          >
+            Add Item
+          </div>
+
+        </div>
+
+      </button>
+
+      @for(slot of theirSlots; track $index){
+
+        <div
+         (dblclick)="removeFruit('them', $index)"
+          class="
+          w-[90px]
+          h-[90px]
+          sm:w-[105px]
+          sm:h-[105px]
+          md:w-[120px]
+          md:h-[120px]
+          lg:w-[130px]
+          lg:h-[130px]
+          rounded-[18px]
+          bg-[#080808]
+          border border-white/5
+          overflow-hidden
+          "
+        >
+
+          @if(slot.fruit){
+
+            <div
+              class="
+              w-full h-full
+              flex flex-col
+              items-center justify-center
+              p-2
+              "
+            >
+
+              <img
+                [src]="slot.fruit.image"
+                [alt]="slot.fruit.name"
+                class="
+                w-full
+                h-[70%]
+                object-contain
+                "
+              >
+
+              <div
+                class="
+                mt-1
+                text-[10px]
+                sm:text-xs
+                text-center
+                truncate
+                w-full
+                "
+              >
+                {{ slot.fruit.name }}
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- ====================================== -->
+<!-- TRADE RESULT -->
+<!-- ====================================== -->
+
+<div
+  class="
+  max-w-[1000px]
+  mx-auto
+  mt-10
+  bg-[#050505]
+  border
+  border-violet-900/20
+  rounded-3xl
+  p-6
+  "
+>
+
+  <!-- RESULT BADGE -->
+
+  <div class="flex justify-center mb-8">
+
+    <div
+      class="
+      px-10
+      py-4
+      rounded-3xl
+      border
+      text-3xl
+      font-bold
+      flex
+      items-center
+      gap-4
+      "
+      [class]="getTradeStatusClasses()"
+    >
+
+      @if(getTradeResult() === 'Win'){
+        <span>📈</span>
+      }
+
+      @if(getTradeResult() === 'Loss'){
+        <span>📉</span>
+      }
+
+      @if(getTradeResult() === 'Fair Trade'){
+        <span>⚖️</span>
+      }
+
+      {{ getTradeResult() }}
+
+    </div>
+
+  </div>
+
+  <!-- VALUES -->
+
+  <div
+    class="
+    grid
+    grid-cols-3
+    items-center
+    text-center
+    mb-8
+    "
+  >
+
+    <div>
+
+      <div
+        class="
+        text-zinc-500
+        font-semibold
+        text-sm
+        uppercase
+        "
+      >
+        YOUR OFFER
+      </div>
+
+      <div
+        class="
+        text-violet-400
+        text-4xl
+        font-bold
+        mt-2
+        "
+      >
+        {{ formatNumber(getTotalValue(yourSlots)) }}
+      </div>
+
+      <div class="text-zinc-400 mt-2">
+        Demand:
+        {{ getTotalDemand(yourSlots) }}/10
+      </div>
+
+      <div class="text-yellow-400 mt-2">
+        Price:
+        {{ formatNumber(getTotalPrice(yourSlots)) }}
+      </div>
+
+    </div>
+
+    <div
+      class="
+      text-4xl
+      font-black
+      text-zinc-500
+      "
+    >
+      VS
+    </div>
+
+    <div>
+
+      <div
+        class="
+        text-zinc-500
+        font-semibold
+        text-sm
+        uppercase
+        "
+      >
+        THEIR OFFER
+      </div>
+
+      <div
+        class="
+        text-fuchsia-400
+        text-4xl
+        font-bold
+        mt-2
+        "
+      >
+        {{ formatNumber(getTotalValue(theirSlots)) }}
+      </div>
+
+      <div class="text-zinc-400 mt-2">
+        Demand:
+        {{ getTotalDemand(theirSlots) }}/10
+      </div>
+
+      <div class="text-yellow-400 mt-2">
+        Price:
+        {{ formatNumber(getTotalPrice(theirSlots)) }}
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PERCENT BAR -->
+
+  <div
+    class="
+    relative
+    h-14
+    rounded-full
+    overflow-hidden
+    bg-[#111]
+    border
+    border-white/5
+    "
+  >
+
+    <div
+      class="
+      absolute
+      left-0
+      top-0
+      h-full
+      bg-gradient-to-r
+      from-violet-400
+      to-fuchsia-400
+      "
+      [style.width.%]="
+      (getTotalValue(yourSlots) /
+      (getTotalValue(yourSlots) +
+      getTotalValue(theirSlots) || 1))
+      * 100
+      "
+    >
+    </div>
+
+    <div
+      class="
+      absolute
+      inset-0
+      flex
+      items-center
+      justify-between
+      px-4
+      text-lg
+      font-bold
+      "
+    >
+
+    <span>
+      {{ getYourPercentage().toFixed(0) }}%
+    </span>
+
+    <span>
+      {{ (100 - getYourPercentage()).toFixed(0) }}%
+    </span> 
+
+    </div>
+
+  </div>
+
+  <!-- PROFIT / LOSS -->
+
+  <div
+    class="
+    mt-8
+    rounded-3xl
+    border
+    border-white/5
+    bg-[#090909]
+    py-8
+    text-center
+    "
+  >
+
+    <div
+      class="
+      text-zinc-500
+      uppercase
+      tracking-widest
+      text-xl
+      mb-3
+      "
+    >
+      {{ getProfitLossLabel() }}
+    </div>
+
+    <div
+      class="
+      text-5xl
+      font-black
+      "
+      [class.text-emerald-400]="getDifference() > 0"
+      [class.text-red-400]="getDifference() < 0"
+      [class.text-yellow-400]="getDifference() === 0"
+    >
+
+      {{ getDifference() > 0 ? '+' : '' }}
+
+      {{ formatNumber(getProfitLoss()) }}
+
+    </div>
+
+  </div>
+
+</div>
+  @if(showFruitSelector){
+
+<div
+  class="
+  fixed
+  top-0
+  left-0
+  w-screen
+  h-screen
+  z-[9999]
+  bg-black/80
+  backdrop-blur-sm
+  flex
+  items-center
+  justify-center
+  "
+>
+
+  <div
+    class="
+    w-full
+    max-w-[1000px]
+    h-[80vh]
+    bg-[#090909]
+    border
+    border-violet-900/30
+    rounded-3xl
+    overflow-hidden
+    "
+  >
+
+    <!-- HEADER -->
+
+    <div
+      class="
+      flex
+      items-center
+      justify-between
+      px-6
+      py-4
+      border-b
+      border-white/10
+      "
+    >
+
+      <h2
+        class="
+        text-xl
+        font-bold
+        text-violet-400
+        "
+      >
+        Select Fruit
+      </h2>
+
+      <button
+        (click)="closeFruitSelector()"
+        class="
+        text-zinc-400
+        hover:text-white
+        text-2xl
+        "
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="p-4 border-b border-white/10">
+
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        placeholder="Search Fruits..."
+        class="
+        w-full
+        px-4
+        py-3
+        rounded-xl
+        bg-[#121212]
+        border
+        border-white/10
+        outline-none
+        text-white
+        "
+      >
+
+    </div>
+
+    <!-- FRUITS -->
+
+    <div
+      class="
+      p-4
+      grid
+      grid-cols-2
+      sm:grid-cols-3
+      md:grid-cols-4
+      lg:grid-cols-5
+      gap-4
+      overflow-y-auto
+      h-[calc(80vh-140px)]
+      "
+    >
+
+      @for(fruit of filteredFruits; track fruit.name){
+
+        <button
+          (click)="selectFruit(fruit)"
+          class="
+          bg-[#121212]
+          border
+          border-white/10
+          rounded-2xl
+          p-3
+          hover:border-violet-500
+          transition-all
+          "
+        >
+
+          <img
+            [src]="fruit.image"
+            [alt]="fruit.name"
+            class="
+            w-20
+            h-20
+            object-contain
+            mx-auto
+            "
+          >
+
+          <div
+            class="
+            mt-3
+            text-sm
+            font-medium
+            text-center
+            "
+          >
+            {{ fruit.name }}
+          </div>
+
+          <div
+            class="
+            text-xs
+            text-zinc-500
+            text-center
+            mt-1
+            "
+          >
+            {{ fruit.rarity }}
+          </div>
+
+        </button>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>
+
+}
+
+  </div>
+
+
+</section>
+

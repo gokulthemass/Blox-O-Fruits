@@ -1,0 +1,57 @@
+<section class="bg-black min-h-screen py-12 px-4 sm:px-6 md:px-8">
+
+  <div class="max-w-[1400px] mx-auto">
+
+    <div class="flex flex-col gap-10">
+
+      <div
+        *ngFor="let map of mapArray"
+        (click)="openDetails(map)"
+        class="max-w-[800px]
+               
+               mx-auto
+               bg-[#0a0a0a]
+               border border-gray-800
+               rounded-2xl
+               overflow-hidden
+               hover:border-violet-500
+               hover:-translate-y-1
+               transition-all duration-300
+               cursor-pointer"
+      >
+
+        <!-- Map Image -->
+        <div class="flex justify-center items-center py-6">
+          <img
+            [src]="map.image"
+            [alt]="map.name"
+            class="w-150 h-150 object-contain"
+          >
+        </div>
+
+        <!-- Map Info -->
+        <div class="p-5 border-t border-gray-800">
+
+          <h2 class="text-2xl font-bold text-white text-center mb-4">
+            {{ map.name }}
+          </h2>
+
+          <div class="flex justify-between items-center">
+            <span class="text-gray-400">
+              Level Requirement
+            </span>
+
+            <span class="text-violet-400 font-bold text-lg">
+              {{ map.requirement | number }}
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
