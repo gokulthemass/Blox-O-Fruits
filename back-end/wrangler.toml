@@ -1,0 +1,9 @@
+name = "blox-ofruits-api"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+
+
+kv_namespaces = [
+  { binding = "CRED_STORE", id = "b294e5e90e5f4757b2035f21504002b5" }
+] 
