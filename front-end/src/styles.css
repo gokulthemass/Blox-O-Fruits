@@ -2,7 +2,13 @@
 
 @import 'tailwindcss';
 
-html,body {
+html {
+    background: black;
+}
+
+body {
+    background: black;
+    overflow-x: hidden;
     overscroll-behavior: none;
 }
 
